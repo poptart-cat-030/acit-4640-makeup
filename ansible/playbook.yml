@@ -8,9 +8,9 @@
     - server_role_redis_server  
   
 - name: Apply Frontend role
-  hosts: server_role_frontend_server
+  hosts: server_role_Web
   become: true
   vars:
     ansible_user: "{{ 'rocky' if 'server_role_redis_server' in group_names else 'admin' }}"
   roles:
-    - server_role_Web
+    - server_role_frontend_server
