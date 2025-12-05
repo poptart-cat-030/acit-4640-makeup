@@ -31,3 +31,27 @@
     src: default.conf
     dest: /etc/nginx/conf.d/default.conf
   when: "'server_role_Database' in group_names and ansible_facts['distribution'] == 'Rocky'"
+
+  # After creating the nginx configuration, add:
+
+# Start and enable nginx
+- name: Start and enable nginx service
+  ansible.builtin.systemd:
+    name: nginx
+    state: started
+    enabled: true
+  when: "'server_role_Database' in group_names and ansible_facts['distribution'] == 'Rocky'"
+
+# Set SELinux context for web content
+- name: Set SELinux context on /var/www/html
+  ansible.builtin.command:
+    cmd: chcon -R -t httpd_sys_content_t /var/www/html
+  when: "'server_role_Database' in group_names and ansible_facts['distribution'] == 'Rocky'"
+  ignore_errors: true
+
+# Restart nginx to load the configuration
+- name: Restart nginx
+  ansible.builtin.systemd:
+    name: nginx
+    state: restarted
+  when: "'server_role_Database' in group_names and ansible_facts['distribution'] == 'Rocky'"
