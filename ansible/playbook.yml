@@ -1,9 +1,9 @@
 ---
 - name: Apply Redis role
-  hosts: server_role_redis_server
+  hosts: server_role_Database
   become: true
   vars:
-    ansible_user: "{{ 'rocky' if 'server_role_redis_server' in group_names else 'ubuntu' }}"
+    ansible_user: "{{ 'rocky' if 'server_role_redis_server' in group_names else 'admin' }}"
   roles:
     - server_role_redis_server  
   
@@ -11,6 +11,6 @@
   hosts: server_role_frontend_server
   become: true
   vars:
-    ansible_user: "{{ 'rocky' if 'server_role_redis_server' in group_names else 'ubuntu' }}"
+    ansible_user: "{{ 'rocky' if 'server_role_redis_server' in group_names else 'admin' }}"
   roles:
-    - server_role_frontend_server
+    - server_role_Web

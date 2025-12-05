@@ -130,7 +130,7 @@ module "redis" {
   source                 = "./modules/web-server/"
   project_name           = local.project_name
   ec2_name               = "rocky"
-  ec2_role               = "Database"  # CHANGED: for Ansible to find it
+  ec2_role               = "Database"
   ami                    = "ami-093bd987f8e53e1f2"
   key_name               = "aws-4640"
   vpc_security_group_ids = [aws_security_group.web.id]
@@ -141,9 +141,9 @@ module "redis" {
 module "frontend" {
   source                 = "./modules/web-server/"
   project_name           = local.project_name
-  ec2_name               = "debian"  # CHANGED name
-  ec2_role               = "Web"  # CHANGED: for Ansible to find it
-  ami                    = data.aws_ami.debian.id  # CHANGED: use Debian AMI
+  ec2_name               = "debian"  
+  ec2_role               = "Web"  
+  ami                    = data.aws_ami.debian.id
   key_name               = "aws-4640"
   vpc_security_group_ids = [aws_security_group.web.id]
   subnet_id              = aws_subnet.web.id
