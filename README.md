@@ -1,8 +1,8 @@
 # 4640-makeup-lab
 
-## Getting Started
+## Setup
 
-## Generate an SSH key pair
+### Generate an SSH key pair
 1. Run the following command:
 ```
 ssh-keygen -t ed25519 -f ~/.ssh/aws -C "makeup-lab"
@@ -21,11 +21,19 @@ We are passing in the `aws.pub` public key we made earlier as an argument into t
 ```
 terraform init
 ```
-3. See what kinds of steps terraform would make to create the infrastructure described in the terraform file using the following command:
+3. Run the following command to format your terraform configuration:
+```
+terraform fmt
+```
+4. Run the following command to check the syntax of your terraform configuration:
+```
+terraform validate
+```
+5. See what kinds of steps terraform would make to create the infrastructure described in the terraform file using the following command:
 ```
 terraform plan
 ```
-4. Create the infrastructure as described by the output of the `terraform plan` command using the following command:
+6. Create the infrastructure as described by the output of the `terraform plan` command using the following command:
 ```
 terraform apply
 ```
@@ -38,18 +46,16 @@ ansible-playbook playbook.yml --syntax-check
 ```
 After running the command, if your playbook syntax is valid then you should see something like: "playbook: playbook.yml"
 <br><br>
-3. Once there are no syntax errors, run the following command to execute the tasks within the playbook:
-```
-ansible-playbook run playbook
-```
-4. Execute the playbook using the following command:
+3. Once there are no syntax errors, execute the playbook using the following command:
 ```
 ansible-playbook -i inventory/aws_ec2.yml playbook.yml
 ```
 
-### Victory Screenshot
+## Victory Screenshots
 Screenshot of us visiting the HTML document being served by our Ubuntu EC2:
 
+
+## Cleanup
 ### Remove public key from AWS
 1. Navigate to the `scripts` folder of the project directory (ex: `<insert_some_path_here>/acit-4640-makeup/scripts`)
 2. Run the following command to execute the remove key script
