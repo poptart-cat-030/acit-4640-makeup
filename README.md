@@ -52,8 +52,11 @@ ansible-playbook -i inventory/aws_ec2.yml playbook.yml
 ```
 
 ## Victory Screenshots
-Screenshot of us visiting the HTML document being served by our Ubuntu EC2:
-
+Visiting the HTML document being served by our Debian EC2 (Web):
+![Successfully access frontend page served by our Debian EC2](images/Web.png)
+<br>
+Visiting the HTML document being served by our Rocky EC2 (Database):
+![Successfully access frontend page served by our Rocky EC2](images/Database.png)
 
 ## Cleanup
 ### Remove public key from AWS
