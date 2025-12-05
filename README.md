@@ -59,6 +59,14 @@ Visiting the HTML document being served by our Rocky EC2 (Database):
 ![Successfully access frontend page served by our Rocky EC2](images/Database.png)
 
 ## Cleanup
+### Remove Provisioned Infrastructure
+1. Navigate to the `terraform` folder of the project directory (ex: `<insert_some_path_here>/acit-4640-makeup/terraform`)
+2. Run the following command to delete the EC2s and other resources you created:
+```
+terraform destroy
+```
+3. Go to the AWS web console and remove any AMIs that weren't removed using the previous command.
+
 ### Remove public key from AWS
 1. Navigate to the `scripts` folder of the project directory (ex: `<insert_some_path_here>/acit-4640-makeup/scripts`)
 2. Run the following command to execute the remove key script
