@@ -28,13 +28,6 @@
 # Create nginx configuration file
 - name: create nginx configuration
   ansible.builtin.copy:
-    src: default.conf # Ensure you have the file "default.conf" in your files directory
-    dest: /etc/nginx/sites-available/default
-  when: "'server_role_Database' in group_names and ansible_facts['distribution'] == 'Rocky'"
-# Enable nginx configuration by creating a symlink
-- name: enable nginx configuration
-  ansible.builtin.file:
-    src: /etc/nginx/sites-available/default
-    dest: /etc/nginx/sites-enabled/default
-    state: link
+    src: default.conf
+    dest: /etc/nginx/conf.d/default.conf
   when: "'server_role_Database' in group_names and ansible_facts['distribution'] == 'Rocky'"
